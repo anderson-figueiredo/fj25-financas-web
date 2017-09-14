@@ -1,5 +1,6 @@
 package br.com.caelum.financas.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Cacheable;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+//import org.jboss.ejb3.annotation.Cache;
 
 @Entity
 @Cacheable
@@ -21,6 +24,7 @@ public class Conta {
 	private String numero;
 	private String banco;
 	
+//	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@OneToMany(mappedBy="conta")
 	private List<Movimentacao> movimentacoes;
 

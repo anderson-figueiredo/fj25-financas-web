@@ -10,7 +10,6 @@ public class CacheInvalidaBean {
 	
 	private Integer id;
 	private Conta conta;
-	
 
 	public void invalidar() {
 		System.out.println("Invalidando o cache programaticamente");
