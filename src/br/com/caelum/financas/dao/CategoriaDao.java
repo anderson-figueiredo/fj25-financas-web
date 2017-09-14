@@ -16,10 +16,12 @@ public class CategoriaDao implements Serializable {
 	private EntityManager manager;
 	
 	public Categoria procura(Integer id) {
+		manager.joinTransaction();
 		return this.manager.find(Categoria.class, id);
 	}
 	
 	public List<Categoria> lista(){
+		manager.joinTransaction();
 		return this.manager.createQuery("select c from Categoria c", Categoria.class).getResultList();
 	}
 }

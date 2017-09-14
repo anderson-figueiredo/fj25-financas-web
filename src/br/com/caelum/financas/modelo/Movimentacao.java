@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class Movimentacao {
 	@Enumerated(EnumType.STRING)
 	private TipoMovimentacao tipoMovimentacao;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	
 	public List<Categoria> getCategorias() {
