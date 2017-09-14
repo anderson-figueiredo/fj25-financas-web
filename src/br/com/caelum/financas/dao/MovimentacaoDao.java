@@ -22,6 +22,7 @@ public class MovimentacaoDao {
 	private EntityManager manager;
 
 	public void adiciona(Movimentacao movimentacao) {
+		manager.joinTransaction();
 		this.manager.persist(movimentacao);
 		
 		if(movimentacao.getValor().compareTo(BigDecimal.ZERO) < 0) {
@@ -77,6 +78,11 @@ public class MovimentacaoDao {
 		Query query = this.manager.createQuery(jpql);
 		query.setParameter("conta", conta);
 		query.setParameter("tipo", tipo);
+		return query.getResultList();
+	}
+	
+	public List<Movimentacao> listaComCategorias(){
+		TypedQuery<Movimentacao> query = manager.createQuery("select distinct m from Movimentacao m left join fetch m.categorias", Movimentacao.class);
 		return query.getResultList();
 	}
 	
