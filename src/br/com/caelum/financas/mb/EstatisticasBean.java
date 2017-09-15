@@ -3,17 +3,17 @@ package br.com.caelum.financas.mb;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.jms.Session;
 import javax.management.j2ee.statistics.Statistic;
 import javax.persistence.EntityManager;
-import org.hibernate.Session;
 
 @Named
 @ApplicationScoped
 public class EstatisticasBean {
-	
-	@Inject 
+
+	@Inject
 	private EntityManager Manager;
-	
+
 	private Statistic estatisticas;
 
 	public void gera() {
